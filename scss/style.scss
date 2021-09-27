@@ -1,0 +1,38 @@
+@import 'global';
+
+body {
+    font-family: $font;
+}
+.navbar {
+    background-color: $darkBlue;
+    a {
+        color: $white;
+    }
+}
+.left {
+    background-color: $grey;
+    .input {
+        margin: $spacing 0; 
+    }
+    .list-group {
+        margin-bottom: $spacing;
+    }
+}
+.add {
+    @extend %button;
+    transition: background-color linear 200ms;
+    &:hover {
+        background-color: $bootblue;
+        color: $white;
+    }
+}
+.right {
+    margin-left: $spacing;
+    h1 {
+        font-size: $size*2.3;
+        margin-top: $spacing*.8;
+    }
+    button {
+        background-color: $white ;
+    }
+}

@@ -1,0 +1,20 @@
+$bootblue: #0c6efd;
+$black: #353535;
+$white: #ffffff;
+$grey: #d6d6d6;
+$darkBlue: #001fe6;
+$turqoise: #0098e6;
+$spacing: 15px;
+$font: 'Yaldevi', sans-serif;
+$size: 15px;
+
+%button {
+    border: none;
+    border-radius: $size;
+    background-color: $grey;
+}
+@mixin flex($just, $align) {
+    display: flex;
+    justify-content: $just;
+    align-items: $align;
+}

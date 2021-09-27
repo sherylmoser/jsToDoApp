@@ -1,3 +1,47 @@
+.add {
+  border: none;
+  border-radius: 15px;
+  background-color: #d6d6d6;
+}
 
+body {
+  font-family: "Yaldevi", sans-serif;
+}
+
+.navbar {
+  background-color: #001fe6;
+}
+.navbar a {
+  color: #ffffff;
+}
+
+.left {
+  background-color: #d6d6d6;
+}
+.left .input {
+  margin: 15px 0;
+}
+.left .list-group {
+  margin-bottom: 15px;
+}
+
+.add {
+  transition: background-color linear 200ms;
+}
+.add:hover {
+  background-color: #0c6efd;
+  color: #ffffff;
+}
+
+.right {
+  margin-left: 15px;
+}
+.right h1 {
+  font-size: 34.5px;
+  margin-top: 12px;
+}
+.right button {
+  background-color: #ffffff;
+}
 
 /*# sourceMappingURL=style.css.map */
