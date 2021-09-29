@@ -1,31 +1,4 @@
-const lists = [
-    {
-        name: "Shopping list",
-        todos: [
-            {
-                text: 'bananas',
-                completed: false
-            },
-            {
-                text: '1 lbs ground turkey',
-                completed: false
-            }
-        ]
-    },
-    {
-        name: "Cleaning",
-        todos: [
-            {
-                text: 'vacuum',
-                completed: false
-            },
-            {
-                text: 'wash windows',
-                completed: false
-            }
-        ]
-    }
-]
+const lists = []
 
 function render() {
     //left side HTML
@@ -38,36 +11,17 @@ function render() {
     document.getElementById('lists').innerHTML = listsHtml;
 
 }
+function addList() {
+    let newListName = document.getElementById('listName').value;
+    let newList = new ToDoList(2, newListName);
+    lists.push(newList);
+    render();
+}
 
-render()
 function currentList() {
 
 }
-
-
-//possible constructors for todo app
-
-// class ToDoList
-// id: string || number    
-// name: String
-// toDos: array
-// addToDo: fn
-// removeToDo: fn
-// clearCompleted: fn
-/**function ToDoList(id, name, toDos = []) {
-    this.id = id;
-    this.name = name;
-    this.toDos = toDos;
-    this.addToDo = (toDo) => {
-        this.toDos.push(toDo);
-    };
-    this.removeToDo = (id) => {
-        this.toDos = this.toDos.filter((toDo) => toDo.id != id);
-    };
-    this.clearCompleted = () => {
-        this.toDos = this.toDos.filter((toDo) => !toDo.completed);
-    };
-}*/
+// class for creating new ToDoList
 class ToDoList {
     constructor(id, name, toDos = []) {
         this.id = id;
@@ -84,17 +38,7 @@ class ToDoList {
         this.toDos = this.toDos.filter((toDo) => !toDo.completed);
     }
 };
-
-
-// class ToDo
-// id: string || number
-// text: string
-// completed: Boolean
-/*function ToDo(id, text, completed = false) {
-    this.id = id;
-    this.text = text;
-    this.completed = completed;
-}*/
+// class for creating new ToDo
 class ToDo {
     constructor(id, text, completed = false) {
         this.id = id;
@@ -102,3 +46,11 @@ class ToDo {
         this.completed = completed;
     }
 }
+// example of how to create lists
+let toDoList = new ToDoList(1, 'Shopping List');
+toDoList.addToDo(new ToDo(1, 'bananas'));
+toDoList.addToDo(new ToDo(2, 'eggs'));
+lists.push(toDoList);
+
+
+render()

@@ -10,7 +10,7 @@ $size: 15px;
 
 %button {
     border: none;
-    border-radius: $size;
+    border-radius: $size*.5;
     background-color: $grey;
 }
 @mixin flex($just, $align) {

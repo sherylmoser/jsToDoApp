@@ -21,6 +21,7 @@ body {
 .add {
     @extend %button;
     transition: background-color linear 200ms;
+    
     &:hover {
         background-color: $bootblue;
         color: $white;
