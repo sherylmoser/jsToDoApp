@@ -1,5 +1,5 @@
-const lists = {
-    1: {
+const lists = [
+    {
         name: "Shopping list",
         todos: [
             {
@@ -12,7 +12,7 @@ const lists = {
             }
         ]
     },
-    2: {
+    {
         name: "Cleaning",
         todos: [
             {
@@ -25,30 +25,80 @@ const lists = {
             }
         ]
     }
-}
+]
 
 function render() {
-    // this will hold the html that will be displayed in the sidebar
+    //left side HTML
     let listsHtml = '<div class="list-group">';
     // iterate through the lists to get their names
-    for (let list of Object.keys(lists)) {
-        listsHtml += `<button type="button" class="list-group-item list-group-item-action">${list.name}</button>`;
+    for (let list of lists) {
+        listsHtml += `<button type="button" onclick="currentList()"class="list-group-item list-group-item-action">${list.name}</button>`;
     };
     listsHtml += '</div>';
-    // print out the lists
     document.getElementById('lists').innerHTML = listsHtml;
 
-    // print out the name of the current list
-    document.getElementById('currentListTitle').innerText = currentList.name;
-
-    // iterate over the todos in the current list
-    let todosHtml = '<ul class="list-group-flush">';
-    currentList.todos.forEach((list) => {
-        todosHtml += `<li class="list-group-item">${todo.text}</li>`;
-    });
-    todosHtml += '</ul>';
-    // print out the todos
-    document.getElementById('currentToDos').innerHTML = todosHtml;
 }
 
 render()
+function currentList() {
+
+}
+
+
+//possible constructors for todo app
+
+// class ToDoList
+// id: string || number    
+// name: String
+// toDos: array
+// addToDo: fn
+// removeToDo: fn
+// clearCompleted: fn
+/**function ToDoList(id, name, toDos = []) {
+    this.id = id;
+    this.name = name;
+    this.toDos = toDos;
+    this.addToDo = (toDo) => {
+        this.toDos.push(toDo);
+    };
+    this.removeToDo = (id) => {
+        this.toDos = this.toDos.filter((toDo) => toDo.id != id);
+    };
+    this.clearCompleted = () => {
+        this.toDos = this.toDos.filter((toDo) => !toDo.completed);
+    };
+}*/
+class ToDoList {
+    constructor(id, name, toDos = []) {
+        this.id = id;
+        this.name = name;
+        this.toDos = toDos;
+    }
+    addToDo(toDo) {
+        this.toDos.push(toDo);
+    }
+    removeToDo(id) {
+        this.toDos = this.toDos.filter((toDo) => toDo.id != id);
+    }
+    clearCompleted() {
+        this.toDos = this.toDos.filter((toDo) => !toDo.completed);
+    }
+};
+
+
+// class ToDo
+// id: string || number
+// text: string
+// completed: Boolean
+/*function ToDo(id, text, completed = false) {
+    this.id = id;
+    this.text = text;
+    this.completed = completed;
+}*/
+class ToDo {
+    constructor(id, text, completed = false) {
+        this.id = id;
+        this.text = text;
+        this.completed = completed;
+    }
+}
