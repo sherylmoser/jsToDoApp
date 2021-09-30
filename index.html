@@ -29,6 +29,7 @@
                     <div class="row input">
                         <input type="text" id="listName" class="col-10" placeholder="Enter List Name">
                         <button class="col-2 add" onclick="addList()"><i class="fas fa-plus"></i></button>
+
                     </div>
                     <div id="lists">
                         <!-- <div class="list-group">
@@ -44,16 +45,42 @@
                                 item</button>
                         </div> -->
                     </div>
+                    <button class="deletebtn">Delete Selected List</button>
                 </div>
-                <div class="col-md-7 right">
+                <div class="col-md-7 right container-fluid">
                     <h1 id="currentListTitle">Shopping List</h1>
                     <div class="row input">
-                        <input type="text" class="col-11" placeholder="Add Item">
+                        <input type="text" id="addToDoItem" class="col-11" placeholder="Add Item">
                         <button class="col-1 add"><i class="fas fa-plus"></i></button>
+
                     </div>
                     <!-- current todo list goes here -->
-                    <div id="currentToDos">
-
+                    <div id="currentToDos" class="">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox">
+                                First checkbox
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox">
+                                Second checkbox
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox">
+                                Third checkbox
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox">
+                                Fourth checkbox
+                            </li>
+                            <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox">
+                                Fifth checkbox
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearbtnDiv">
+                        <button class="clearCompleted" onclick="clearCompleted()">Clear Completed</button>
                     </div>
                 </div>
             </div>

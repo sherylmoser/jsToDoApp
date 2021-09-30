@@ -21,14 +21,18 @@ body {
 .add {
     @extend %button;
     transition: background-color linear 200ms;
-    
     &:hover {
         background-color: $bootblue;
         color: $white;
     }
 }
+.deletebtn {
+    @extend %button;
+    background-color: $black;
+    color: $white;
+    font-size: $size*.8;
+}
 .right {
-    margin-left: $spacing;
     h1 {
         font-size: $size*2.3;
         margin-top: $spacing*.8;
@@ -36,4 +40,16 @@ body {
     button {
         background-color: $white ;
     }
+    .clearCompleted {
+        @extend %button;
+        background-color: $bootblue;
+        color: $white;
+        font-size: $size;
+    }
+}
+.list-group {
+    margin-top: $spacing;
+}
+.clearbtnDiv {
+    @include flex(flex-end, center);
 }

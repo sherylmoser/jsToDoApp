@@ -1,7 +1,8 @@
-.add {
+.right .clearCompleted, .deletebtn, .add {
   border: none;
   border-radius: 7.5px;
   background-color: #d6d6d6;
+  padding: 5px;
 }
 
 body {
@@ -33,15 +34,33 @@ body {
   color: #ffffff;
 }
 
-.right {
-  margin-left: 15px;
+.deletebtn {
+  background-color: #353535;
+  color: #ffffff;
+  font-size: 12px;
 }
+
 .right h1 {
   font-size: 34.5px;
   margin-top: 12px;
 }
 .right button {
   background-color: #ffffff;
+}
+.right .clearCompleted {
+  background-color: #0c6efd;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.list-group {
+  margin-top: 15px;
+}
+
+.clearbtnDiv {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */

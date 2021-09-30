@@ -5,12 +5,15 @@ function render() {
     let listsHtml = '<div class="list-group">';
     // iterate through the lists to get their names
     for (let list of lists) {
-        listsHtml += `<button type="button" onclick="currentList()"class="list-group-item list-group-item-action">${list.name}</button>`;
+        listsHtml += `<button type="button" onclick="activeList()" class="list-group-item list-group-item-action">${list.name}</button>`;
     };
     listsHtml += '</div>';
     document.getElementById('lists').innerHTML = listsHtml;
 
 }
+// function createId() {
+//     return Math.random().toString(16).slice(2)
+// }
 function addList() {
     let newListName = document.getElementById('listName').value;
     let newList = new ToDoList(2, newListName);
@@ -18,9 +21,10 @@ function addList() {
     render();
 }
 
-function currentList() {
-
+function activeList() {
+    event.target.classList.toggle('active');
 }
+
 // class for creating new ToDoList
 class ToDoList {
     constructor(id, name, toDos = []) {
