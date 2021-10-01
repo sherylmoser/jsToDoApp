@@ -45,13 +45,13 @@
                                 item</button>
                         </div> -->
                     </div>
-                    <button class="deletebtn">Delete Selected List</button>
+                    <button class="deletebtn" onclick="removeList()">Delete Selected List</button>
                 </div>
                 <div class="col-md-7 right container-fluid">
-                    <h1 id="currentListTitle">Shopping List</h1>
+                    <h1 id="currentListTitle">Current List</h1>
                     <div class="row input">
                         <input type="text" id="addToDoItem" class="col-11" placeholder="Add Item">
-                        <button class="col-1 add"><i class="fas fa-plus"></i></button>
+                        <button class="col-1 add" onclick="addNewToDo()"><i class="fas fa-plus"></i></button>
 
                     </div>
                     <!-- current todo list goes here -->

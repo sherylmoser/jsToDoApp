@@ -1,4 +1,4 @@
-const lists = []
+
 
 function render() {
     //left side HTML
@@ -11,20 +11,15 @@ function render() {
     document.getElementById('lists').innerHTML = listsHtml;
 
 }
-// function createId() {
-//     return Math.random().toString(16).slice(2)
-// }
-function addList() {
-    let newListName = document.getElementById('listName').value;
-    let newList = new ToDoList(2, newListName);
-    lists.push(newList);
-    render();
-}
 
-function activeList() {
-    event.target.classList.toggle('active');
-}
 
+// class for creating app array
+class App {
+    constructor(lists = [], activeList = 0) {
+        this.lists = lists;
+        this.activeList = activeList;
+    }
+}
 // class for creating new ToDoList
 class ToDoList {
     constructor(id, name, toDos = []) {
@@ -50,11 +45,3 @@ class ToDo {
         this.completed = completed;
     }
 }
-// example of how to create lists
-let toDoList = new ToDoList(1, 'Shopping List');
-toDoList.addToDo(new ToDo(1, 'bananas'));
-toDoList.addToDo(new ToDo(2, 'eggs'));
-lists.push(toDoList);
-
-
-render()
