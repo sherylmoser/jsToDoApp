@@ -24,25 +24,26 @@ function render() {
     };
     toDosHTML += '</ul>';
     document.getElementById('currentToDos').innerHTML = toDosHTML;
+    // clearing text input values
+    document.getElementById('listName').value = '';
+    document.getElementById('addToDoItem').value = '';
 }
 function createListId() {
     return lists.length;
 }
-// function createToDoId(listIndex) {
-//     return lists[0].toDos.length;
-// }
+function createToDoId() {
+    return (lists[activeListId].toDos.length);
+}
 function addList() {
     let newListName = document.getElementById('listName').value;
     let newList = new ToDoList(createListId(), newListName);
     lists.push(newList);
     render();
 }
-
 function addNewToDo() {
     let newToDoName = document.getElementById('addToDoItem').value;
-    let newToDo = new ToDo(1, newToDoName);
-
-    console.log(newToDo);
+    let newToDo = new ToDo(createToDoId(), newToDoName);
+    lists[activeListId].toDos.push(newToDo);
     render();
 }
 function setActiveList() {
@@ -53,14 +54,12 @@ function removeList() {
     lists.splice(activeListId, 1);
     activeListId = 0;
     render();
-
 }
 // class for creating new ToDoList
 class ToDoList {
-    constructor(id, name, activeList = 0, toDos = []) {
+    constructor(id, name, toDos = []) {
         this.id = id;
         this.name = name;
-        this.activeList = activeList;
         this.toDos = toDos;
     }
     addToDo(toDo) {
@@ -83,13 +82,13 @@ class ToDo {
 }
 // example of how to create lists
 let toDoList = new ToDoList(createListId(), 'Shopping List');
-toDoList.addToDo(new ToDo(1, 'bananas'));
-toDoList.addToDo(new ToDo(2, 'eggs'));
+toDoList.addToDo(new ToDo(0, 'bananas'));
+toDoList.addToDo(new ToDo(1, 'eggs'));
 lists.push(toDoList);
 
 let toDoList2 = new ToDoList(createListId(), 'Cleaning');
-toDoList2.addToDo(new ToDo(1, 'clean craft room'));
-toDoList2.addToDo(new ToDo(2, 'wash windows'));
+toDoList2.addToDo(new ToDo(0, 'clean craft room'));
+toDoList2.addToDo(new ToDo(1, 'wash windows'));
 lists.push(toDoList2);
 
 
