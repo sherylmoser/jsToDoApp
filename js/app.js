@@ -19,7 +19,10 @@ function render() {
     for (let toDo of toDos) {
         toDosHTML += `<li class="list-group-item">
         <input class="form-check-input me-1" type="checkbox" id="${toDo.id}"" onclick="setCompleted()">
+        <div class="toDoSpacing">
         ${toDo.text}
+        <button class="removeToDo" id="${toDo.id}" onclick="removeThisToDo()"><i class="fas fa-times"></i></button>
+        </div>
         </li>`
     };
     toDosHTML += '</ul>';
@@ -55,6 +58,12 @@ function removeList() {
     lists.splice(activeListId, 1);
     activeListId = 0;
     render();
+}
+function removeThisToDo() {
+    let currentList = lists[activeListId];
+    let selectedToDo = event.target.getAttribute('id');
+    let removedToDo = currentList.toDos[selectedToDo];
+    console.log(removedToDo);
 }
 function setCompleted() {
     let currentList = lists[activeListId];

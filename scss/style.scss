@@ -49,6 +49,17 @@ body {
 }
 .list-group {
     margin-top: $spacing;
+    .list-group-item {
+        @include flex(flex-start, center);
+    }
+    .toDoSpacing {
+        width: 80%;
+        @include flex(space-between, center);
+    }
+    .removeToDo {
+        @extend %button;
+        background-color: $white;
+    }
 }
 .clearbtnDiv {
     @include flex(flex-end, center);

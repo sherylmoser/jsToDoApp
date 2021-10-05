@@ -1,4 +1,4 @@
-.right .clearCompleted, .deletebtn, .add {
+.list-group .removeToDo, .right .clearCompleted, .deletebtn, .add {
   border: none;
   border-radius: 7.5px;
   background-color: #d6d6d6;
@@ -55,6 +55,20 @@ body {
 
 .list-group {
   margin-top: 15px;
+}
+.list-group .list-group-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.list-group .toDoSpacing {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-group .removeToDo {
+  background-color: #ffffff;
 }
 
 .clearbtnDiv {
