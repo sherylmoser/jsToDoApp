@@ -1,5 +1,5 @@
-const lists = []
-let activeListId = 0
+const lists = [];
+let activeListId = 0;
 
 function render() {
     //left side HTML
@@ -18,7 +18,7 @@ function render() {
     let toDos = lists[activeListId].toDos;
     for (let toDo of toDos) {
         toDosHTML += `<li class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox">
+        <input class="form-check-input me-1" type="checkbox" id="${toDo.id}"" onclick="setCompleted()">
         ${toDo.text}
         </li>`
     };
@@ -43,7 +43,8 @@ function addList() {
 function addNewToDo() {
     let newToDoName = document.getElementById('addToDoItem').value;
     let newToDo = new ToDo(createToDoId(), newToDoName);
-    lists[activeListId].toDos.push(newToDo);
+    let currentList = lists[activeListId];
+    currentList.addToDo(newToDo)
     render();
 }
 function setActiveList() {
@@ -53,6 +54,21 @@ function setActiveList() {
 function removeList() {
     lists.splice(activeListId, 1);
     activeListId = 0;
+    render();
+}
+function setCompleted() {
+    let currentList = lists[activeListId];
+    let clickedBox = event.target.getAttribute('id');
+    let clickedToDo = currentList.toDos[clickedBox];
+    if (clickedToDo.completed == false) {
+        clickedToDo.completed = true;
+    } else {
+        clickedToDo.completed = false;
+    }
+}
+function clearCompletedToDos() {
+    let currentList = lists[activeListId];
+    currentList.clearCompleted();
     render();
 }
 // class for creating new ToDoList
