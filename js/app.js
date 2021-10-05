@@ -21,7 +21,7 @@ function render() {
         <input class="form-check-input me-1" type="checkbox" id="${toDo.id}"" onclick="setCompleted()">
         <div class="toDoSpacing">
         ${toDo.text}
-        <button class="removeToDo" id="${toDo.id}" onclick="removeThisToDo()"><i class="fas fa-times"></i></button>
+        <button class="removeToDo" id="${toDo.id}" onclick="removeThisToDo()"><i id="${toDo.id}" class="fas fa-times"></i></button>
         </div>
         </li>`
     };
@@ -62,8 +62,8 @@ function removeList() {
 function removeThisToDo() {
     let currentList = lists[activeListId];
     let selectedToDo = event.target.getAttribute('id');
-    let removedToDo = currentList.toDos[selectedToDo];
-    console.log(removedToDo);
+    currentList.removeToDo(selectedToDo);
+    render();
 }
 function setCompleted() {
     let currentList = lists[activeListId];
