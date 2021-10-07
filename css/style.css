@@ -10,7 +10,7 @@ body {
 }
 
 .navbar {
-  background-color: #353535;
+  background-color: #021279;
 }
 .navbar a {
   color: #ffffff;
@@ -30,7 +30,7 @@ body {
   transition: background-color linear 200ms;
 }
 .add:hover {
-  background-color: #0c6efd;
+  background-color: #055cde;
   color: #ffffff;
 }
 
@@ -38,6 +38,7 @@ body {
   background-color: #353535;
   color: #ffffff;
   font-size: 12px;
+  margin-bottom: 15px;
 }
 
 .right h1 {
@@ -48,7 +49,7 @@ body {
   background-color: #ffffff;
 }
 .right .clearCompleted {
-  background-color: #0c6efd;
+  background-color: #055cde;
   color: #ffffff;
   font-size: 15px;
 }

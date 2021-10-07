@@ -4,7 +4,7 @@ body {
     font-family: $font;
 }
 .navbar {
-    background-color: $black;
+    background-color: $darkBlue;
     a {
         color: $white;
     }
@@ -22,7 +22,7 @@ body {
     @extend %button;
     transition: background-color linear 200ms;
     &:hover {
-        background-color: $bootblue;
+        background-color: $blue;
         color: $white;
     }
 }
@@ -31,6 +31,7 @@ body {
     background-color: $black;
     color: $white;
     font-size: $size*.8;
+    margin-bottom: $spacing;
 }
 .right {
     h1 {
@@ -42,7 +43,7 @@ body {
     }
     .clearCompleted {
         @extend %button;
-        background-color: $bootblue;
+        background-color: $blue;
         color: $white;
         font-size: $size;
     }

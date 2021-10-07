@@ -60,7 +60,6 @@ function setActiveList() {
 }
 function removeList() {
     lists.splice(activeListId, 1);
-    activeListId = 0;
     render();
     save();
 }
