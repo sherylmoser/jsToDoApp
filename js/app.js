@@ -1,5 +1,6 @@
-const lists = [];
+let lists = [];
 let activeListId = 0;
+
 
 function render() {
     //left side HTML
@@ -42,6 +43,7 @@ function addList() {
     let newList = new ToDoList(createListId(), newListName);
     lists.push(newList);
     render();
+    save();
 }
 function addNewToDo() {
     let newToDoName = document.getElementById('addToDoItem').value;
@@ -49,21 +51,25 @@ function addNewToDo() {
     let currentList = lists[activeListId];
     currentList.addToDo(newToDo)
     render();
+    save();
 }
 function setActiveList() {
     activeListId = event.target.getAttribute('id');
     render();
+    save();
 }
 function removeList() {
     lists.splice(activeListId, 1);
     activeListId = 0;
     render();
+    save();
 }
 function removeThisToDo() {
     let currentList = lists[activeListId];
     let selectedToDo = event.target.getAttribute('id');
     currentList.removeToDo(selectedToDo);
     render();
+    save();
 }
 function setCompleted() {
     let currentList = lists[activeListId];
@@ -74,11 +80,32 @@ function setCompleted() {
     } else {
         clickedToDo.completed = false;
     }
+    save();
 }
 function clearCompletedToDos() {
     let currentList = lists[activeListId];
     currentList.clearCompleted();
     render();
+    save();
+}
+function save() {
+    const listsArrayString = JSON.stringify(lists);
+    localStorage.setItem('listsArrayString', listsArrayString);
+}
+function retrieve() {
+    const listsArrayString = localStorage.getItem('listsArrayString');
+    const listsArrayObject = JSON.parse(listsArrayString);
+
+    if (listsArrayObject) {
+        const typedObjects = listsArrayObject.map((list) => {
+            let typedToDos = list.toDos.map(
+                (toDo) => new ToDo(toDo.id, toDo.text, toDo.completed)
+            );
+            let typedList = new ToDoList(list.id, list.name, typedToDos);
+            return typedList
+        });
+        return typedObjects;
+    }
 }
 // class for creating new ToDoList
 class ToDoList {
@@ -105,16 +132,20 @@ class ToDo {
         this.completed = completed;
     }
 }
-// example of how to create lists
-let toDoList = new ToDoList(createListId(), 'Shopping List');
-toDoList.addToDo(new ToDo(0, 'bananas'));
-toDoList.addToDo(new ToDo(1, 'eggs'));
-lists.push(toDoList);
 
-let toDoList2 = new ToDoList(createListId(), 'Cleaning');
-toDoList2.addToDo(new ToDo(0, 'clean craft room'));
-toDoList2.addToDo(new ToDo(1, 'wash windows'));
-lists.push(toDoList2);
+const existingLists = retrieve();
+if (!existingLists) {
+    let toDoList = new ToDoList(createListId(), 'Shopping List');
+    toDoList.addToDo(new ToDo(0, 'bananas'));
+    toDoList.addToDo(new ToDo(1, 'eggs'));
+    lists.push(toDoList);
 
+    let toDoList2 = new ToDoList(createListId(), 'Cleaning');
+    toDoList2.addToDo(new ToDo(0, 'clean craft room'));
+    toDoList2.addToDo(new ToDo(1, 'wash windows'));
+    lists.push(toDoList2);
+} else {
+    lists = existingLists;
+}
 
 render()
