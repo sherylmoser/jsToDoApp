@@ -7,7 +7,7 @@ function render() {
     let listsHtml = '<div class="list-group">';
     // iterate through the lists to get their names
     for (let list of lists) {
-        listsHtml += `<button type="button" id="${list.id}" onclick="setActiveList()" class="list-group-item list-group-item-action">${list.name}</button>`;
+        listsHtml += `<button type="button" id="${lists.indexOf(list)}" onclick="setActiveList()" class="list-group-item list-group-item-action">${list.name}</button>`;
     };
     listsHtml += '</div>';
     document.getElementById('lists').innerHTML = listsHtml;
@@ -19,10 +19,10 @@ function render() {
     let toDos = lists[activeListId].toDos;
     for (let toDo of toDos) {
         toDosHTML += `<li class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" id="${toDo.id}"" onclick="setCompleted()">
+        <input class="form-check-input me-1" type="checkbox" id="${toDos.indexOf(toDo)}"" onclick="setCompleted()">
         <div class="toDoSpacing">
         ${toDo.text}
-        <button class="removeToDo" id="${toDo.id}" onclick="removeThisToDo()"><i id="${toDo.id}" class="fas fa-times"></i></button>
+        <button class="removeToDo" id="${toDos.indexOf(toDo)}" onclick="removeThisToDo()"><i id="${toDo.id}" class="fas fa-times"></i></button>
         </div>
         </li>`
     };
@@ -60,6 +60,7 @@ function setActiveList() {
 }
 function removeList() {
     lists.splice(activeListId, 1);
+    activeListId = lists[0].id;
     render();
     save();
 }
